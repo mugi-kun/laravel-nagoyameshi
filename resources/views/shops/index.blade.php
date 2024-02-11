@@ -8,7 +8,8 @@
     </div>
 
      <div class="col-9">
-       
+        {{$min_budget}}
+        {{$max_budget}}
         <div class="container">
              @if ($category !== null)
                 <br>

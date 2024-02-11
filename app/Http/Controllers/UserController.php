@@ -42,5 +42,8 @@ class UserController extends Controller
         $user->name = $request->input('name') ? $request->input('name') : $user->name;
         $user->email = $request->input('email') ? $request->input('email') : $user->email;
         $user->paid = $request->input('paid') ? $request->input('paid') : $user->paid;
+        $user->update();
+
+        return to_route('mypage');
     }
 }
