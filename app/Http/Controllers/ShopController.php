@@ -24,16 +24,19 @@ class ShopController extends Controller
             $shops = Shop::where('category_id', $request->category)->sortable()->paginate(15);
             $total_count = Shop::where('category_id', $request->category)->count();
             $category = Category::find($request->category);
-        } else if ($min_budget !== null){
-            $shops = Shop::where('min_budget', '<=', $min_budget)->sortable()->paginate(15);
+        } else if ($min_budget !== null || $max_budget !== null){
+            $query = Shop::query();
+            if($min_budget !== null){
+                $query->where('min_budget', '>=', $min_budget);
+            }
+            if($max_budget !== null){
+                $query->where('mmax_budget', '<=', $max_budget);
+            }
+            $shops = $query->sortable()->paginate(15);
             $total_count = $shops->total();
             $category = null;
             $keyword= null;
-        } else if ($max_budget !== null){
-                $shops = Shop::where('max_budget', '>=', $max_budget)->sortable()->paginate(15);
-                $total_count = $shops->total();
-                $category = null;
-                $keyword= null;
+
         } else if ($keyword !== null){
             $shops = Shop::where('name', 'like', "%{$keyword}%")->sortable()->paginate(15);
             $total_count = $shops->total();

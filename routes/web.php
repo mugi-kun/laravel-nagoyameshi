@@ -6,6 +6,7 @@ use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\VisitedController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ReservationController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -50,6 +51,13 @@ Route::middleware(['auth', 'verified'])->group(function() {
         Route::get('users/mypage', 'mypage')->name('mypage');
         Route::get('users/mypage/edit', 'edit')->name('mypage.edit');
         Route::put('users/mypage', 'update')->name('mypage.update');
+    });
+
+    Route::controller(ReservationController::class)->group(function() {
+        Route::get('reservations', 'index')->name('reservations.index');
+        Route::get('/shops/{shop_id}/reservations/create', 'create')->name('shops.reservations.create');
+        Route::post('/shops/{shop_id}/reservations', 'store')->name('shops.reservations.store');
+        Route::delete('reservations/{shop_id}'. 'destroy')->name('reservations.destroy');
     });
 
 });

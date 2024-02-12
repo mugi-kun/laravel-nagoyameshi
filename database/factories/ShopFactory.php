@@ -18,9 +18,10 @@ class ShopFactory extends Factory
     {
         return [
             'name' => fake()->name(),
+            'image' => '/image/dummy.jpg',
             'description' => fake()->realText(50, 5),
-            'min_budget' => fake()->numberBetween(1000, 2000),
-            'max_budget' => fake()->numberBetween(2000, 10000),
+            'min_budget' => fake()->numberBetween(10, 20)*100,
+            'max_budget' => fake()->numberBetween(20, 100)*100,
             'holiday' => fake()->realText(10, 5),
             'opening_hour' => fake()->realText(10, 5),
             'post_code' => fake()->postcode(),
