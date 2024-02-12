@@ -30,7 +30,7 @@ class ShopController extends Controller
                 $query->where('min_budget', '>=', $min_budget);
             }
             if($max_budget !== null){
-                $query->where('mmax_budget', '<=', $max_budget);
+                $query->where('max_budget', '<=', $max_budget);
             }
             $shops = $query->sortable()->paginate(15);
             $total_count = $shops->total();
