@@ -54,9 +54,11 @@ Route::middleware(['auth', 'verified'])->group(function() {
     });
 
     Route::controller(ReservationController::class)->group(function() {
-        Route::get('reservations', 'index')->name('reservations.index');
-        Route::get('/shops/{shop_id}/reservations/create', 'create')->name('shops.reservations.create');
-        Route::post('/shops/{shop_id}/reservations', 'store')->name('shops.reservations.store');
+        Route::get('/reservations', 'index')->name('reservations.index'); 
+        Route::get('/shops/{shop_id}/reservations/create', 'create')->name('reservations.create');
+        Route::post('/shops/{shop_id}/reservations/create', 'store')->name('reservations.store');
+       
+        
         Route::delete('reservations/{shop_id}'. 'destroy')->name('reservations.destroy');
     });
 

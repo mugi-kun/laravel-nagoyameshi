@@ -34,8 +34,8 @@
                  <input type="hidden" name="name" value="{{$shop->name}}">
                  <div class="row">
                      <div class="col-7">
-                         <button type="submit" class="btn nagoyameshi-submit-button w-100">
-                             <i class="fas fa-shopping-cart"></i>
+                        <!-- もし有料会員であれば予約できる、有料会員でなければボタンを押せないようにする -->
+                         <button type="submit" class="btn nagoyameshi-submit-button w-100" onclick="{{ route('reservations.create', $shop->id) }}">
                              予約する
                          </button>
                      </div>

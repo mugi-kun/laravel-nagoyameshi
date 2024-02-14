@@ -16,9 +16,12 @@ class ReservationController extends Controller
      */
     public function index()
     {
+        // 予約テーブルからすべてのデータを取得
         $reservations = Reservation::paginate(15);
+        // ショップテーブルからshop_idに紐づいたnameカラムを取得
+        $shop_names = Reservation::with('shop:name')->get();
 
-        return view('reservations.index', compact('reservations'));
+        return view('reservations.index', compact('reservations',  'shop_names'));
     }
 
     /**
@@ -28,9 +31,9 @@ class ReservationController extends Controller
      */
     public function create()
     {
-        $shop = Shop::all();
+        $shops = Shop::all();
 
-        return view('reservations.create');
+        return view('reservations.create', compact('shops'));
 
 
     }
