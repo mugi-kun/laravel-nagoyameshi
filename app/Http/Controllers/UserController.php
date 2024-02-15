@@ -63,9 +63,9 @@ class UserController extends Controller
 
         $reserve_shops = $user->reserve_shops()->get();
 
-        $reserve_contents = Reservation::all();
+        $reservations = Reservation::with('shop:id,name')->paginate(15);
 
 
-        return view('users.reserve', compact('user','reserve_shops', 'reserve_contents'))->with('shop:name');
+        return view('users.reserve', compact('user','reserve_shops', 'reservations'));
     }
 }

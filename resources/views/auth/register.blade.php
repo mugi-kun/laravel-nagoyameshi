@@ -62,7 +62,14 @@
                          <input type="text" class="form-control @error('phone') is-invalid @enderror nagoyameshi-login-input" name="phone" required placeholder="03-5790-9039">
                      </div>
                  </div>
- 
+
+                 <div class="form-group row">
+                    <label for="paid" class="col-md-5 col-form-label text-md-left">会員プラン<span class="ml-1 nagoyameshi-require-input-label"><span class="nagoyameshi-require-input-label-text">必須</span></span></label>
+                    <div class="col-md-7">
+                         <input type="checkbox" class="nagoyameshi-login-input" name="paid">有料プランを希望する(¥300/月額)
+                         <br><a href="#">有料プランについて</a>
+                    </div>
+                </div>
                  <div class="form-group row">
                      <label for="password" class="col-md-5 col-form-label text-md-left">パスワード<span class="ml-1 nagoyameshi-require-input-label"><span class="nagoyameshi-require-input-label-text">必須</span></span></label>
  

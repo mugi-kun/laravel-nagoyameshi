@@ -8,18 +8,17 @@
          <hr>
  
          <div class="row">
-            @foreach ($reserve_shops as $reserve_shop)
-             @foreach ($reserve_contents as $reserve_content)
-                 <div class="col-md-7 mt-2">
+            @foreach ($reservations as $reservation) 
+                <div class="col-md-7 mt-2">
                      <div class="d-inline-flex">
-                         <a href="{{ route('shops.show', $reserve_shop->id) }}" class="w-25">
+                         <a href="{{ route('shops.show', $user->id) }}" class="w-25">
                              <img src="{{ asset('img/dummy.jpg')}}" class="img-fluid w-100">
                          </a>
                          <div class="container mt-3">
-                             <h5 class="w-100 nagoyameshi-favorite-item-text">{{ $reserve_content->name }}</h5>                          
-                             <h6 class="w-100 nagoyameshi-favorite-item-text">予約日時:{{ $reserve_content->reserved_datetime }}</h6>
-                             <h6 class="w-100 nagoyameshi-favorite-item-text">人数:{{ $reserve_content->number_of_people }}名様 </h6>
-                             <h6 class="w-100 nagoyameshi-favorite-item-text">承り日時:{{ $reserve_content->created_at }}</h6>
+                             <h5 class="w-100 nagoyameshi-favorite-item-text">{{ $reservation->shop->name }}</h5>                          
+                             <h6 class="w-100 nagoyameshi-favorite-item-text">予約日時:{{ $reservation->reserved_datetime }}</h6>
+                             <h6 class="w-100 nagoyameshi-favorite-item-text">人数:{{ $reservation->number_of_people }}名様 </h6>
+                             <h6 class="w-100 nagoyameshi-favorite-item-text">承り日時:{{ $reservation->created_at }}</h6>
                          </div>
                      </div>
                  </div>
@@ -32,7 +31,6 @@
                          @method('DELETE')
                      </form> 
                  </div>
-             @endforeach
              @endforeach
          </div>
  
