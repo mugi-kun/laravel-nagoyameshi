@@ -34,8 +34,7 @@
                  <input type="hidden" name="name" value="{{$shop->name}}">
                  <div class="row">
                      <div class="col-7">
-                        <!-- もし有料会員であれば予約できる、有料会員でなければボタンを押せないようにする -->
-                         <button type="submit" class="btn nagoyameshi-submit-button w-100" onclick="{{ route('reservations.create', $shop->id) }}">
+                         <button type="submit" class="btn nagoyameshi-submit-button w-100" onclick="#">
                              予約する
                          </button>
                      </div>
@@ -82,6 +81,8 @@
                  <form id="favorites-store-form" action="{{ route('visited.store', $shop->id) }}" method="POST" class="d-none">
                      @csrf
                  </form>   
+       
+                 
              @endauth
          </div>
  

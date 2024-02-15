@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Reservation;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
@@ -45,5 +46,26 @@ class UserController extends Controller
         $user->update();
 
         return to_route('mypage');
+    }
+
+    public function favorite()
+    {
+        $user = Auth::user();
+        $favorite_shops = $user->favorite_shops;
+
+        return view('users.favorite', compact('favorite_shops'));
+    }
+
+    public function reserve()
+    {
+
+        $user = Auth::user();
+
+        $reserve_shops = $user->reserve_shops()->get();
+
+        $reserve_contents = Reservation::all();
+
+
+        return view('users.reserve', compact('user','reserve_shops', 'reserve_contents'))->with('shop:name');
     }
 }

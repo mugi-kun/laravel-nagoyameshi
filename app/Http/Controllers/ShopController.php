@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Shop;
 use App\Models\Category;
+use App\Models\Reservation;
 use Illuminate\Http\Request;
 
 class ShopController extends Controller
@@ -96,6 +97,7 @@ class ShopController extends Controller
     public function show(Shop $shop)
     {
         $reviews = $shop->reviews()->get();
+      
 
         return view('shops.show', compact('shop', 'reviews'));
     }

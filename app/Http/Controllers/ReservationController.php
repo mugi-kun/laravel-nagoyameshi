@@ -9,20 +9,7 @@ use Illuminate\Http\Request;
 
 class ReservationController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        // 予約テーブルからすべてのデータを取得
-        $reservations = Reservation::paginate(15);
-        // ショップテーブルからshop_idに紐づいたnameカラムを取得
-        $shop_names = Reservation::with('shop:name')->get();
-
-        return view('reservations.index', compact('reservations',  'shop_names'));
-    }
+ 
 
     /**
      * Show the form for creating a new resource.
@@ -31,6 +18,7 @@ class ReservationController extends Controller
      */
     public function create()
     {
+        
         $shops = Shop::all();
 
         return view('reservations.create', compact('shops'));
@@ -46,6 +34,9 @@ class ReservationController extends Controller
      */
     public function store(Request $request)
     {
+
+        $user = Auth::user()->reservations();
+        
         $request->validate([
             'reservation_date' => 'required|date_format:Y-m-d',
             'reservation_time' => 'required|date_format:H:i',
@@ -54,16 +45,19 @@ class ReservationController extends Controller
 
         $reservation = new Reservation();
         $reservation->reserved_datetime = $request->input('reserved_datetime');
-        $reservation->number_of_people = $request->input('number_od_people');
+        $reservation->number_of_people = $request->input('number_of_people');
         $reservation->shop_id = $request->input('shop_id');
         $reservation->user_id = Auth::user()->id;
         $reservation->save();
 
-        return redirect('reservations.index')->with('flash_message', '予約が完了しました');
+        
 
 
+        return view('mypage.reserve', compact('user','request','reservation'))->with('flash_message', '予約が完了しました');
     
     }
+
+ 
 
     /**
      * Remove the specified resource from storage.
@@ -75,11 +69,11 @@ class ReservationController extends Controller
     {
         if('user_id' ==! $request->user_id)
         {
-            return redirect('reservation.index')->session()->with('error_message', '不正なアクセスです');
+            return redirect('users.reserve')->session()->with('error_message', '不正なアクセスです');
         } else {
             $reservation->delete();
 
-            return redirect('reservation,index')->with('flash_message', '予約をキャンセルしました。');
+            return redirect('users.reserve')->with('flash_message', '予約をキャンセルしました。');
         }
     }
 }

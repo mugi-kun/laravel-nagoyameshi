@@ -37,7 +37,7 @@ Route::middleware('auth')->group(function () {
 require __DIR__.'/auth.php';
 
 Route::middleware(['auth', 'verified'])->group(function() {
-    Route::resource('shops', ShopController::class);
+    Route::resource('shops', ShopController::class);   
 
     Route::post('reviews', [ReviewController::class, 'store'])->name('reviews.store');
 
@@ -51,15 +51,16 @@ Route::middleware(['auth', 'verified'])->group(function() {
         Route::get('users/mypage', 'mypage')->name('mypage');
         Route::get('users/mypage/edit', 'edit')->name('mypage.edit');
         Route::put('users/mypage', 'update')->name('mypage.update');
+        Route::get('users/mypage/favorite', 'favorite')->name('mypage.favorite');
+        Route::get('users/mypage/reserve', 'reserve')->name('mypage.reserve');
     });
 
-    Route::controller(ReservationController::class)->group(function() {
-        Route::get('/reservations', 'index')->name('reservations.index'); 
-        Route::get('/shops/{shop_id}/reservations/create', 'create')->name('reservations.create');
-        Route::post('/shops/{shop_id}/reservations/create', 'store')->name('reservations.store');
-       
+    // Route::controller(ReservationController::class)->group(function() { 
+        // Route::get('shops/{id}/reservations/create', 'create')->name('reservations.create');
+        // Route::get('shops/{id}/reservations/show', 'show')->name('reservations.show');
+        // Route::post('reservations', 'store')->name('reservations.store');  
         
-        Route::delete('reservations/{shop_id}'. 'destroy')->name('reservations.destroy');
-    });
+        // Route::delete('reservations/{shop_id}/'. 'destroy')->name('reservations.destroy');
+    // });
 
 });
