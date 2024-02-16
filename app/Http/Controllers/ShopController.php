@@ -151,4 +151,13 @@ class ShopController extends Controller
 
         return to_route('shops.index');
     }
+
+    public function reserve(Request $request)
+    {
+        $user = Auth::user();
+
+        $shop = Shop::all();
+
+        return view('shops.reserve', compact('request', 'user', 'shop'));
+    }
 }

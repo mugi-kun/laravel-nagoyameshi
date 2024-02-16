@@ -53,7 +53,7 @@ class ReservationController extends Controller
         
 
 
-        return view('mypage.reserve', compact('user','request','reservation'))->with('flash_message', '予約が完了しました');
+        return view('users.reserve', compact('user','request','reservation'))->with('flash_message', '予約が完了しました');
     
     }
 

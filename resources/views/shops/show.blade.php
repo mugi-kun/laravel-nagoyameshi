@@ -28,13 +28,13 @@
                  <hr>
              </div>
              @auth
-             <form method="POST" class="m-3 align-items-end">
+             <form method="POST" class="m-3 align-items-end" action = "{{ route('shops.reserve', $shop->id) }}">
                  @csrf
                  <input type="hidden" name="id" value="{{$shop->id}}">
                  <input type="hidden" name="name" value="{{$shop->name}}">
                  <div class="row">
-                     <div class="col-7">
-                         <button type="submit" class="btn nagoyameshi-submit-button w-100" onclick="#">
+                     <div class="col-7"> 
+                         <button type="submit" class="btn nagoyameshi-submit-button w-100">
                              予約する
                          </button>
                      </div>

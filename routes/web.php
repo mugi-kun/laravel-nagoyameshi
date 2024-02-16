@@ -38,6 +38,7 @@ require __DIR__.'/auth.php';
 
 Route::middleware(['auth', 'verified'])->group(function() {
     Route::resource('shops', ShopController::class);   
+    Route::post('shops/{id}/reserve', [ShopController::class], 'reserve')->name('shops.reserve');
 
     Route::post('reviews', [ReviewController::class, 'store'])->name('reviews.store');
 
@@ -56,7 +57,7 @@ Route::middleware(['auth', 'verified'])->group(function() {
     });
 
     // Route::controller(ReservationController::class)->group(function() { 
-        // Route::get('shops/{id}/reservations/create', 'create')->name('reservations.create');
+       
         // Route::get('shops/{id}/reservations/show', 'show')->name('reservations.show');
         // Route::post('reservations', 'store')->name('reservations.store');  
         
