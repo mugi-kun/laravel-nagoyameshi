@@ -48,6 +48,9 @@ Route::middleware(['auth', 'verified'])->group(function() {
     Route::post('visited/{shop_id}', [VisitedController::class, 'store'])->name('visited.store');
     Route::delete('visited/{shop_id}', [VisitedController::class, 'destroy'])->name('visited.destroy');
 
+    Route::get('reservations/{id}',[ReservationController::class, 'create'])->name('reservations.create');
+    Route::post('reservations/{id}',[ReservationController::class, 'store'])->name('reservations.store');
+
     Route::controller(UserController::class)->group(function() {
         Route::get('users/mypage', 'mypage')->name('mypage');
         Route::get('users/mypage/edit', 'edit')->name('mypage.edit');
@@ -56,12 +59,6 @@ Route::middleware(['auth', 'verified'])->group(function() {
         Route::get('users/mypage/reserve', 'reserve')->name('mypage.reserve');
     });
 
-    // Route::controller(ReservationController::class)->group(function() { 
-       
-        // Route::get('shops/{id}/reservations/show', 'show')->name('reservations.show');
-        // Route::post('reservations', 'store')->name('reservations.store');  
-        
-        // Route::delete('reservations/{shop_id}/'. 'destroy')->name('reservations.destroy');
-    // });
+    
 
 });

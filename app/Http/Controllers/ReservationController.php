@@ -16,12 +16,12 @@ class ReservationController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($shop_id)
     {
         
         $shops = Shop::all();
 
-        return view('reservations.create', compact('shops'));
+        return view('reservations.create', compact('shops', 'shop_id'));
 
 
     }
@@ -35,7 +35,7 @@ class ReservationController extends Controller
     public function store(Request $request)
     {
 
-        $user = Auth::user()->reservations();
+        $shops = Shop::all();
         
         $request->validate([
             'reservation_date' => 'required|date_format:Y-m-d',
@@ -53,7 +53,7 @@ class ReservationController extends Controller
         
 
 
-        return view('users.reserve', compact('user','request','reservation'))->with('flash_message', '予約が完了しました');
+        return view('reservations.store', compact('shops','request','reservation'))->with('flash_message', '予約が完了しました');
     
     }
 

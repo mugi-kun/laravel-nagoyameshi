@@ -28,7 +28,7 @@
                  <hr>
              </div>
              @auth
-             <form method="POST" class="m-3 align-items-end" action = "{{ route('shops.reserve', $shop->id) }}">
+             <form mothod="POST" class="m-3 align-items-end" action="{{route('reservations.create', $shop->id)}}">
                  @csrf
                  <input type="hidden" name="id" value="{{$shop->id}}">
                  <input type="hidden" name="name" value="{{$shop->name}}">
@@ -81,7 +81,6 @@
                  <form id="favorites-store-form" action="{{ route('visited.store', $shop->id) }}" method="POST" class="d-none">
                      @csrf
                  </form>   
-       
                  
              @endauth
          </div>
