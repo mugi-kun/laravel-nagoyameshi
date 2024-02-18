@@ -19,13 +19,13 @@ class ReservationController extends Controller
     public function create($shop_id)
     {
         
-        $shops = Shop::all();
+        $shop = Shop::all();
 
-        return view('reservations.create', compact('shops', 'shop_id'));
+        return view('reservations.create', compact('shop', 'shop_id'));
 
 
     }
-
+    
     /**
      * Store a newly created resource in storage.
      *
@@ -53,7 +53,7 @@ class ReservationController extends Controller
         
 
 
-        return view('reservations.store', compact('shops','request','reservation'))->with('flash_message', '予約が完了しました');
+        return view('users.reserve', compact('shops','request','reservation'))->with('flash_message', '予約が完了しました');
     
     }
 

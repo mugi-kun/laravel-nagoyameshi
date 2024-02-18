@@ -4,6 +4,7 @@
 
  @section('content')
 
+ @auth
  <div class="container">
      <h3>予約フォーム</h3>
  
@@ -16,6 +17,7 @@
          <div class="form-group">
              <label for="reserved-datetime">予約日時</label>
              <input type="date" name="reserved-datetime" id="reserved-datetime" class="form-control">
+             <input type="time" name="reserved-datetime" id="reserved-datetime" class="form-control">
          </div>
          <div class="form-group">
              <label for="number-of-people">予約人数</label>
@@ -27,6 +29,7 @@
          </div>
          <button type="submit" class="btn btn-success">予約する</button>
      </form>
+     @endauth
  
      <a href="{{ route('shops.index') }}">店舗一覧に戻る</a>
  </div>
