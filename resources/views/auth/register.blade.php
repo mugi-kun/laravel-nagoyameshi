@@ -12,14 +12,14 @@
                  @csrf
  
                  <div class="form-group row">
-                     <label for="name" class="col-md-5 col-form-label text-md-left">氏名<span class="ml-1 nagoyameshi-require-input-label"><span class="nagoyameshi-require-input-label-text">必須</span></span></label>
+                     <label for="name" class="col-md-5 col-form-label text-md-left">ユーザー名<span class="ml-1 nagoyameshi-require-input-label"><span class="nagoyameshi-require-input-label-text">必須</span></span></label>
  
                      <div class="col-md-7">
                          <input id="name" type="text" class="form-control @error('name') is-invalid @enderror nagoyameshi-login-input" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus placeholder="侍 太郎">
  
                          @error('name')
                          <span class="invalid-feedback" role="alert">
-                             <strong>氏名を入力してください</strong>
+                             <strong>ユーザー名を入力してください</strong>
                          </span>
                          @enderror
                      </div>
@@ -39,30 +39,6 @@
                      </div>
                  </div>
  
-                 <div class="form-group row">
-                     <label for="postal_code" class="col-md-5 col-form-label text-md-left">郵便番号<span class="ml-1 nagoyameshi-require-input-label"><span class="nagoyameshi-require-input-label-text">必須</span></span></label>
- 
-                     <div class="col-md-7">
-                         <input type="text" class="form-control @error('postal_code') is-invalid @enderror nagoyameshi-login-input" name="postal_code" required placeholder="150-0043">
-                     </div>
-                 </div>
- 
-                 <div class="form-group row">
-                     <label for="address" class="col-md-5 col-form-label text-md-left">住所<span class="ml-1 nagoyameshi-require-input-label"><span class="nagoyameshi-require-input-label-text">必須</span></span></label>
- 
-                     <div class="col-md-7">
-                         <input type="text" class="form-control @error('address') is-invalid @enderror nagoyameshi-login-input" name="address" required placeholder="東京都渋谷区道玄坂２丁目１１−１">
-                     </div>
-                 </div>
- 
-                 <div class="form-group row">
-                     <label for="phone" class="col-md-5 col-form-label text-md-left">電話番号<span class="ml-1 nagoyameshi-require-input-label"><span class="nagoyameshi-require-input-label-text">必須</span></span></label>
- 
-                     <div class="col-md-7">
-                         <input type="text" class="form-control @error('phone') is-invalid @enderror nagoyameshi-login-input" name="phone" required placeholder="03-5790-9039">
-                     </div>
-                 </div>
-
                  <div class="form-group row">
                     <label for="paid" class="col-md-5 col-form-label text-md-left">会員プラン<span class="ml-1 nagoyameshi-require-input-label"><span class="nagoyameshi-require-input-label-text">必須</span></span></label>
                     <div class="col-md-7">

@@ -19,9 +19,9 @@ class ReservationController extends Controller
     public function create($shop_id)
     {
         
-        $shop = Shop::all();
+       
 
-        return view('reservations.create', compact('shop', 'shop_id'));
+        return view('reservations.create', compact('shop_id'));
 
 
     }
@@ -35,7 +35,6 @@ class ReservationController extends Controller
     public function store(Request $request)
     {
 
-        $shops = Shop::all();
         
         $request->validate([
             'reservation_date' => 'required|date_format:Y-m-d',
@@ -53,7 +52,7 @@ class ReservationController extends Controller
         
 
 
-        return view('users.reserve', compact('shops','request','reservation'))->with('flash_message', '予約が完了しました');
+        return view('users.reserve', compact('reservation'))->with('flash_message', '予約が完了しました');
     
     }
 

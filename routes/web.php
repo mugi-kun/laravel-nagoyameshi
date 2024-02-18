@@ -50,6 +50,7 @@ Route::middleware(['auth', 'verified'])->group(function() {
 
     Route::get('reservations/{id}',[ReservationController::class, 'create'])->name('reservations.create');
     Route::post('reservations/{shop_id}',[ReservationController::class, 'store'])->name('reservations.store');
+    Route::delete('reaservations/{shop_id}',[ReservationController::class, 'destroy'])->name('reservations.destroy');
 
     Route::controller(UserController::class)->group(function() {
         Route::get('users/mypage', 'mypage')->name('mypage');
